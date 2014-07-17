@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <title>Stylish Portfolio Template for Bootstrap</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="scripts/css/bootstrap.css" rel="stylesheet" />
+    <!-- Add custom CSS here -->
+    <link href="scripts/css/stylish-portfolio.css" rel="stylesheet" />
+    <link href="scripts/font-awesome/css/font-awesome.min.css" rel="stylesheet" />   
+</head>
+
+<body>
+
+    <!-- Side Menu -->
+    <a id="menu-toggle" href="#" class="btn btn-primary btn-lg toggle"><i class="fa fa-bars"></i></a>
+    <div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+            <a id="menu-close" href="#" class="btn btn-default btn-lg pull-right toggle"><i class="fa fa-times"></i></a>
+            <li class="sidebar-brand"><a href="http://startbootstrap.com">Start Bootstrap</a>
+            </li>
+            <li><a href="#top">Home</a>
+            </li>
+            <li><a href="#about">About</a>
+            </li>
+            <li><a href="#services">Services</a>
+            </li>
+            <li><a href="#portfolio">Portfolio</a>
+            </li>
+            <li><a href="#contact">Contact</a>
+            </li>
+        </ul>
+    </div>
+    <!-- /Side Menu -->
+
+    <!-- Full Page Image Header Area -->
+    <div id="top" class="header">
+        <div class="vert-text">
+            <h1>Pivotal Tracker Report Generator</h1>
+            <h3>
+                <em>You</em> feed your pivotal project,
+                <em>We</em> report it for you</h3>
+            <small>Please select your user</small>
+           <select id="sctUsers">
+                <option value="" selected></option>
+                <option value="7632a665cd74a53a9c50e40e5698f715">Tom Lopez</option>
+                <option value="b4a752782f711a7c564221c2b0c2d5dc">Frédéric Berton</option>
+            </select>
+        </div>
+    </div>
+    <!-- /Full Page Image Header Area -->
+
+    <!-- Intro -->
+    <div id="action" class="intro">
+        <div class="grid">
+            <div class="row-fluid">
+                <div class="span2 offset2">
+                    Select your project</br>
+                    <select id="sctProjects">  
+                         <option value="" selected></option> 
+                    </select>
+                </div>
+                <div class="span3 offset1 ">
+                    Select a start date</br>
+                    <input id="datepicker"></input>                    
+                </div>
+                <div class="span3">
+                    <label class="checkbox">
+                        <input type="checkbox" id="restrUser">Restrict by user</br>
+                    </label>
+                    <select id="sctUserRestrict">    
+                        <option value="" selected></option>                     
+                    </select>
+                </div>
+            </div>
+            <div class="row-fluid">
+                <div class="span2 offset2">
+                    <label class="checkbox">
+                        <input type="checkbox" id="restrState">Restrict by state</br>
+                    </label>
+                    <select id="sctState">  
+                        <option value="" selected></option> 
+                        <option value="accepted">Accepted</option>
+                        <option value="finished">Finished</option>
+                        <option value="unstarted">Unstarted</option>      
+                    </select>
+                </div>
+
+                <div class="span3 offset1">
+                    <label class="checkbox">
+                        <input type="checkbox" id="restrLabel">Restrict by label</br>
+                    </label>
+                    <select id="sctLabel">  
+                             <option value="" selected></option> 
+                    </select>
+                </div>
+            </div>
+            <div class="row-fluid">
+                <div class="span4 offset5">
+                    <a id="valid" href="#action" class="btn btn-default btn-lg">Get Storys</a>
+                    <a id="generer" href="#action" class="btn btn-default btn-lg">Generate File</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /Intro -->
+
+    <!-- Services -->
+    <div id="result" class="services">
+        <div id="resultDiv" class="container">
+            <div class="row">
+                <div class="span10 offset1" id="storiesDiv">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2 col-md-offset-2 text-center">
+                    <div class="service-item">
+                    </div>
+                </div>
+                <div class="col-md-2 text-center">
+                    <div class="service-item">
+                        
+                    </div>
+                </div>
+                <div class="col-md-2 text-center">
+                    <div class="service-item">
+                        
+                    </div>
+                </div>
+                <div class="col-md-2 text-center">
+                    <div class="service-item">
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /Services -->
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3 text-center">
+                    <div class="top-scroll">
+                        <a href="#top"><i class="fa fa-circle-arrow-up scroll fa-4x"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- /Footer -->
+
+    <!-- JavaScript -->
+    <script src="scripts/JQuery.js"></script>
+    <script src="scripts/js/jquery.fileDownload.js"></script>
+    <script src="scripts/js/bootstrap.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+    <script src="./scripts/PivotalDataAccess.js"></script>
+    <script src="./scripts/PivotalDataDisplay.js"></script>
+    <script src="./scripts/PivotalDataFile.js"></script>
+     <script>
+         $(document).ready(function () {
+             $("#datepicker").datepicker({ dateFormat: 'mm/dd/yy' });
+             $("#sctUsers").change(function () { token = $("#sctUsers").val(); console.log('token : ' + token); window.location = "#action"; getAllProjects(); });
+             $("#sctProjects").change(function () { projectId = $("#sctProjects").val(); fillInformation(projectId); console.log(projectId); });
+             $("#datepicker").change(function () { date = $("#datepicker").val(); console.log(date); });
+             $("#valid").click(function () { run(); });
+             $("#generer").click(function () { sendNFormatData(storiesTab, tasksTab); });
+         });
+    </script>
+    <!-- Custom JavaScript for the Side Menu and Smooth Scrolling -->
+    <script>
+    $("#menu-close").click(function(e) {
+        e.preventDefault();
+        $("#sidebar-wrapper").toggleClass("active");
+    });
+    </script>
+    <script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#sidebar-wrapper").toggleClass("active");
+    });
+    </script>
+    <script>
+    $(function() {
+        $('a[href*=#]:not([href=#])').click(function() {
+            if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') || location.hostname == this.hostname) {
+
+                var target = $(this.hash);
+                target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+                if (target.length) {
+                    $('html,body').animate({
+                        scrollTop: target.offset().top
+                    }, 1000);
+                    return false;
+                }
+            }
+        });
+    });
+    </script>
+
+</body>
+
+</html>

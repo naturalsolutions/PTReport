@@ -1,0 +1,175 @@
+Element brut : 
+Fin de l'élement brut : 
+Troisième et dernier : 
+
+Element brut : 
+modification de la gestion des utilisateurs : recréation des procédures stockées suivantes en tenant compte de la nouvelle architecture, checkpassword, selectonewtuse_login, selectallactive, selectone, selectall
+ modification des classes associées (allègement pour empêcher la suppression et la modification)
+ déplacement des fichiers dans le pipe_securite
+Fin de l'élement brut : 
+Premiere part 0 : Modification de la gestion des utilisateurs : recréation des procédures stockées suivantes en tenant compte de la nouvelle architecture, checkpassword, selectonewtuse_login, selectallactive, selectone, selectall
+Seconde part 0 : Modification de la gestion des utilisateurs : recréation des procédures stockées suivantes en tenant compte de la nouvelle architecture, checkpassword, selectonewtuse_login, selectallactive, selectone, selectall
+ NOW STR : Modification de la gestion des utilisateurs : recréation des procédures stockées suivantes en tenant compte de la nouvelle architecture, checkpassword, selectonewtuse_login, selectallactive, selectone, selectallPremiere part else1 :  modification des classes associées (allègement pour empêcher la suppression et la modification)
+Premiere part else -> if1 : Modification des classes associées (allègement pour empêcher la suppression et la modification)
+Premiere part else -> else1 : Modification des classes associées (allègement pour empêcher la suppression et la modification)
+Seconde part 1 : Modification des classes associées (allègement pour empêcher la suppression et la modification)
+ NOW STR : Modification de la gestion des utilisateurs : recréation des procédures stockées suivantes en tenant compte de la nouvelle architecture, checkpassword, selectonewtuse_login, selectallactive, selectone, selectallModification des classes associées (allègement pour empêcher la suppression et la modification)Premiere part else2 :  déplacement des fichiers dans le pipe_securite
+Premiere part else -> if2 : Déplacement des fichiers dans le pipe_securite
+Premiere part else -> else2 : Déplacement des fichiers dans le pipe_securite
+Seconde part 2 : Déplacement des fichiers dans le pipe_securite
+ NOW STR : Modification de la gestion des utilisateurs : recréation des procédures stockées suivantes en tenant compte de la nouvelle architecture, checkpassword, selectonewtuse_login, selectallactive, selectone, selectallModification des classes associées (allègement pour empêcher la suppression et la modification)Déplacement des fichiers dans le pipe_securiteTroisième et dernier : 	•Modification de la gestion des utilisateurs : recréation des procédures stockées suivantes en tenant compte de la nouvelle architecture, checkpassword, selectonewtuse_login, selectallactive, selectone, selectallModification des classes associées (allègement pour empêcher la suppression et la modification)Déplacement des fichiers dans le pipe_securite.
+Element brut : 
+modification de la gestion des applications : recréation des procédures stockées suivantes en tenant compte de la nouvelle architecture, selectallwtusr_pk_id, selectone
+ modification des classes associées (allègement pour empêcher la suppression et la modification)
+ déplacement des fichiers dans le pipe_securite
+Fin de l'élement brut : 
+Premiere part 0 : Modification de la gestion des applications : recréation des procédures stockées suivantes en tenant compte de la nouvelle architecture, selectallwtusr_pk_id, selectone
+Seconde part 0 : Modification de la gestion des applications : recréation des procédures stockées suivantes en tenant compte de la nouvelle architecture, selectallwtusr_pk_id, selectone
+ NOW STR : Modification de la gestion des applications : recréation des procédures stockées suivantes en tenant compte de la nouvelle architecture, selectallwtusr_pk_id, selectonePremiere part else1 :  modification des classes associées (allègement pour empêcher la suppression et la modification)
+Premiere part else -> if1 : Modification des classes associées (allègement pour empêcher la suppression et la modification)
+Premiere part else -> else1 : Modification des classes associées (allègement pour empêcher la suppression et la modification)
+Seconde part 1 : Modification des classes associées (allègement pour empêcher la suppression et la modification)
+ NOW STR : Modification de la gestion des applications : recréation des procédures stockées suivantes en tenant compte de la nouvelle architecture, selectallwtusr_pk_id, selectoneModification des classes associées (allègement pour empêcher la suppression et la modification)Premiere part else2 :  déplacement des fichiers dans le pipe_securite
+Premiere part else -> if2 : Déplacement des fichiers dans le pipe_securite
+Premiere part else -> else2 : Déplacement des fichiers dans le pipe_securite
+Seconde part 2 : Déplacement des fichiers dans le pipe_securite
+ NOW STR : Modification de la gestion des applications : recréation des procédures stockées suivantes en tenant compte de la nouvelle architecture, selectallwtusr_pk_id, selectoneModification des classes associées (allègement pour empêcher la suppression et la modification)Déplacement des fichiers dans le pipe_securiteTroisième et dernier : 	•Modification de la gestion des applications : recréation des procédures stockées suivantes en tenant compte de la nouvelle architecture, selectallwtusr_pk_id, selectoneModification des classes associées (allègement pour empêcher la suppression et la modification)Déplacement des fichiers dans le pipe_securite.
+Element brut : 
+modification de la gestion des autorisations : recréation des procédures stockées suivantes en tenant compte de la nouvelle architecture, getrole
+ modification des classes associées (allègement pour empêcher la suppression et la modification)
+ déplacement des fichiers dans le pipe_securite
+Fin de l'élement brut : 
+Premiere part 0 : Modification de la gestion des autorisations : recréation des procédures stockées suivantes en tenant compte de la nouvelle architecture, getrole
+Seconde part 0 : Modification de la gestion des autorisations : recréation des procédures stockées suivantes en tenant compte de la nouvelle architecture, getrole
+ NOW STR : Modification de la gestion des autorisations : recréation des procédures stockées suivantes en tenant compte de la nouvelle architecture, getrolePremiere part else1 :  modification des classes associées (allègement pour empêcher la suppression et la modification)
+Premiere part else -> if1 : Modification des classes associées (allègement pour empêcher la suppression et la modification)
+Premiere part else -> else1 : Modification des classes associées (allègement pour empêcher la suppression et la modification)
+Seconde part 1 : Modification des classes associées (allègement pour empêcher la suppression et la modification)
+ NOW STR : Modification de la gestion des autorisations : recréation des procédures stockées suivantes en tenant compte de la nouvelle architecture, getroleModification des classes associées (allègement pour empêcher la suppression et la modification)Premiere part else2 :  déplacement des fichiers dans le pipe_securite
+Premiere part else -> if2 : Déplacement des fichiers dans le pipe_securite
+Premiere part else -> else2 : Déplacement des fichiers dans le pipe_securite
+Seconde part 2 : Déplacement des fichiers dans le pipe_securite
+ NOW STR : Modification de la gestion des autorisations : recréation des procédures stockées suivantes en tenant compte de la nouvelle architecture, getroleModification des classes associées (allègement pour empêcher la suppression et la modification)Déplacement des fichiers dans le pipe_securiteTroisième et dernier : 	•Modification de la gestion des autorisations : recréation des procédures stockées suivantes en tenant compte de la nouvelle architecture, getroleModification des classes associées (allègement pour empêcher la suppression et la modification)Déplacement des fichiers dans le pipe_securite.
+Element brut : 
+test de fonctionnement de track avec la nouvelle base
+Fin de l'élement brut : 
+Premiere part 0 : Test de fonctionnement de track avec la nouvelle base
+Seconde part 0 : Test de fonctionnement de track avec la nouvelle base
+ NOW STR : Test de fonctionnement de track avec la nouvelle baseTroisième et dernier : 	•Test de fonctionnement de track avec la nouvelle base.
+Element brut : 
+mise à jour des vues d'export impliquant des données de securité
+Fin de l'élement brut : 
+Premiere part 0 : Mise à jour des vues d'export impliquant des données de securité
+Seconde part 0 : Mise à jour des vues d'export impliquant des données de securité
+ NOW STR : Mise à jour des vues d'export impliquant des données de securitéTroisième et dernier : 	•Mise à jour des vues d'export impliquant des données de securité.
+Element brut : 
+Fin de l'élement brut : 
+Troisième et dernier : 
+
+Element brut : 
+faire l'exercice sql de recrutement
+Fin de l'élement brut : 
+Premiere part 0 : Faire l'exercice sql de recrutement
+Seconde part 0 : Faire l'exercice sql de recrutement
+ NOW STR : Faire l'exercice sql de recrutementTroisième et dernier : 	•Faire l'exercice sql de recrutement.
+Element brut : 
+Fin de l'élement brut : 
+Troisième et dernier : 
+
+Element brut : 
+ajout d'une table de relation "tuserdepartements" entre départements et users contenant les champs suivants : tudp_pk_id, tudp_fk_tuse_id, tudp_fk_tdep_id, ajouter les contraintes de relations fk
+Fin de l'élement brut : 
+Premiere part 0 : Ajout d'une table de relation "tuserdepartements" entre départements et users contenant les champs suivants : tudp_pk_id, tudp_fk_tuse_id, tudp_fk_tdep_id, ajouter les contraintes de relations fk
+Seconde part 0 : Ajout d'une table de relation "tuserdepartements" entre départements et users contenant les champs suivants : tudp_pk_id, tudp_fk_tuse_id, tudp_fk_tdep_id, ajouter les contraintes de relations fk
+ NOW STR : Ajout d'une table de relation "tuserdepartements" entre départements et users contenant les champs suivants : tudp_pk_id, tudp_fk_tuse_id, tudp_fk_tdep_id, ajouter les contraintes de relations fkTroisième et dernier : 	•Ajout d'une table de relation "tuserdepartements" entre départements et users contenant les champs suivants : tudp_pk_id, tudp_fk_tuse_id, tudp_fk_tdep_id, ajouter les contraintes de relations fk.
+Element brut : 
+Fin de l'élement brut : 
+Troisième et dernier : 	•.
+Element brut : 
+Fin de l'élement brut : 
+Troisième et dernier : 	•.
+Element brut : 
+Fin de l'élement brut : 
+Troisième et dernier : 	•.
+Element brut : 
+Fin de l'élement brut : 
+Troisième et dernier : 	•.
+Element brut : 
+Fin de l'élement brut : 
+Troisième et dernier : 	•.
+Element brut : 
+Fin de l'élement brut : 
+Troisième et dernier : 
+
+Element brut : 
+reproduire les résultats de la fiche d'un oiseau sur l'application track, du côté base de données au niveau : de l'age (procédure stockée existante), liste des protocoles ou il est impliqué (création d'une vue ou d'une procédure)
+Fin de l'élement brut : 
+Premiere part 0 : Reproduire les résultats de la fiche d'un oiseau sur l'application track, du côté base de données au niveau : de l'age (procédure stockée existante), liste des protocoles ou il est impliqué (création d'une vue ou d'une procédure)
+Seconde part 0 : Reproduire les résultats de la fiche d'un oiseau sur l'application track, du côté base de données au niveau : de l'age (procédure stockée existante), liste des protocoles ou il est impliqué (création d'une vue ou d'une procédure)
+ NOW STR : Reproduire les résultats de la fiche d'un oiseau sur l'application track, du côté base de données au niveau : de l'age (procédure stockée existante), liste des protocoles ou il est impliqué (création d'une vue ou d'une procédure)Troisième et dernier : 	•Reproduire les résultats de la fiche d'un oiseau sur l'application track, du côté base de données au niveau : de l'age (procédure stockée existante), liste des protocoles ou il est impliqué (création d'une vue ou d'une procédure).
+Element brut : 
+pour un oiseau donné, trouver toutes les positions dans lequel il a été
+ création d'une procédure ou plus sioux, utilisation de procédures déjà existantes
+Fin de l'élement brut : 
+Premiere part 0 : Pour un oiseau donné, trouver toutes les positions dans lequel il a été
+Seconde part 0 : Pour un oiseau donné, trouver toutes les positions dans lequel il a été
+ NOW STR : Pour un oiseau donné, trouver toutes les positions dans lequel il a étéPremiere part else1 :  création d'une procédure ou plus sioux, utilisation de procédures déjà existantes
+Premiere part else -> if1 : Création d'une procédure ou plus sioux, utilisation de procédures déjà existantes
+Premiere part else -> else1 : Création d'une procédure ou plus sioux, utilisation de procédures déjà existantes
+Seconde part 1 : Création d'une procédure ou plus sioux, utilisation de procédures déjà existantes
+ NOW STR : Pour un oiseau donné, trouver toutes les positions dans lequel il a étéCréation d'une procédure ou plus sioux, utilisation de procédures déjà existantesTroisième et dernier : 	•Pour un oiseau donné, trouver toutes les positions dans lequel il a étéCréation d'une procédure ou plus sioux, utilisation de procédures déjà existantes.
+Element brut : 
+Fin de l'élement brut : 
+Troisième et dernier : 
+
+Element brut : 
+Fin de l'élement brut : 
+Troisième et dernier : 	•.
+Element brut : 
+Fin de l'élement brut : 
+Troisième et dernier : 
+
+Element brut : 
+Fin de l'élement brut : 
+Troisième et dernier : 	•.
+Element brut : 
+Fin de l'élement brut : 
+Troisième et dernier : 	•.
+Element brut : 
+Fin de l'élement brut : 
+Troisième et dernier : 	•.
+Element brut : 
+Fin de l'élement brut : 
+Troisième et dernier : 
+
+Element brut : 
+Fin de l'élement brut : 
+Troisième et dernier : 	•.
+Element brut : 
+Fin de l'élement brut : 
+Troisième et dernier : 	•.
+Element brut : 
+Fin de l'élement brut : 
+Troisième et dernier : 	•.
+Element brut : 
+Fin de l'élement brut : 
+Troisième et dernier : 	•.
+Element brut : 
+Fin de l'élement brut : 
+Troisième et dernier : 	•.
+Element brut : 
+Fin de l'élement brut : 
+Troisième et dernier : 
+
+Element brut : 
+Fin de l'élement brut : 
+Troisième et dernier : 
+
+Element brut : 
+Fin de l'élement brut : 
+Troisième et dernier : 
+
+Element brut : 
+Fin de l'élement brut : 
+Troisième et dernier : 
+

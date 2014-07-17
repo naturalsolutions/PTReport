@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<!-- Copyright © Microsoft Corporation. All rights reserved. -->
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>PTReport_web</title>
+    <script src="./scripts/JQuery.js"></script>
+    <link href="scripts/css/bootstrap.css" rel="stylesheet" />
+    <link href="scripts/css/ptReportCss.css" rel="stylesheet" />
+    <script src="scripts/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+    <script src="./scripts/PivotalDataAccess.js"></script>
+    <script src="./scripts/PivotalDataDisplay.js"></script>
+    <script src="./scripts/PivotalDataFile.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $("#datepicker").datepicker({ dateFormat: 'mm/dd/yy' });
+            $("#sctUsers").change(function () { token = $("#sctUsers").val();console.log('token : ' + token);getAllProjects(); });
+            $("#sctProjects").change(function () { projectId = $("#sctProjects").val(); console.log(projectId); });
+            $("#datepicker").change(function () { date = $("#datepicker").val(); console.log(date); });
+            $("#valid").click(getStoryWDate);
+            $("#generer").click(function () { sendNFormatData(storiesTab, tasksTab); });
+        });
+        </script>
+</head>
+<body>
+    <div id="header">
+        <img id="logo" src="scripts/img/Pivotal-Tracker-Stacked_thumbnail.png" />
+        <h1 class="header">Pivotal Tracker Repport Generator</h1>
+    </div>
+        <select id="sctUsers">
+        <option value="" selected></option>
+        <option value="7632a665cd74a53a9c50e40e5698f715">Tom Lopez</option>
+        <option value="b4a752782f711a7c564221c2b0c2d5dc">Frédéric Berton</option>
+    </select>
+    <select id="sctProjects">        
+    </select>
+    <input id="datepicker"></input>
+    <button id="valid" value="Confirmer">Confirmer</button>
+    <button id="generer" value="Générer">Générer le fichier</button>
+    <label id="taskCount"></label>
+    <div id="storiesDiv">
+    </div>
+</body>
+</html>

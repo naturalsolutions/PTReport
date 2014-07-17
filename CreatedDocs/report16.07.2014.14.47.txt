@@ -1,0 +1,54 @@
+
+Supprimer les tables et procédures stockées liées aux régimes alimentaires.
+	•Création d'un script de suppression des tables : taliments, tregime, tquantité et toutes les procédures stockées associées.
+
+Créer une page dans l'appli où l'on peut gérer les unités.
+	•Créer la story-1 et 1 et 1.
+
+Bug de la page typesAspx.
+	•Correction de la page typesAspx.
+
+Renommage des champs utilisant la table tuser.
+	•Renommage des champs suivants : timp_fk_tusr_id, tmod_fk_tusr_id, tsai_fk_tusr_id, treq_fk_tusr_id, en utilisant la nomenclature tuse au lieu de tusr script des modifications.
+	•Script de renommage de toutes les procédures stockées impliquées (script database et modification)
+	•Tests.
+	•Renommer tlog_user_id selon la nomenclature Fk.
+	•Mettre à jour les classes.
+
+Tlog_user_id = 0, d'où cela provient?
+	•Recherche l'origine de l'enregistrement de tlog_user_id = 0 et réfléchir à une solution alternative 
+	•Test de session à la suppressionb.
+	•Correction des différents endroit ou la redirection se faisait par rapport à l'adresse relative de la page de login.
+	•Remise en place du testeur de session dans la master page.
+
+Dans la page typeAspx afficher un message comme quoi la validation a marché
+	•Pour la page typeAspx, lorsque l'on clique sur "valider" faire apparaitre un message traduit qui confirme la validation.
+
+Bug interface d'export.
+	•Cacher le bloc des erreurs si aucune erreur n'a été constatée durant le process cf screenshot.
+
+Implémenter le "tous" dans les menus déroulants de la page d'historique d'import.
+	•Au lieu de " " ajouter "tous" en tête des menus déroulants d'utilisateurs de la page importrecapAspx voir dans l'application si ce doit être ajouté ailleurs.
+	•Tests.
+
+Traduire le bouton "actualiser les formulaires"
+	•Traduire le bouton "actualiser les formulaires" de la page typeAspx.
+
+Rapport mensuel d'activité
+	•Rédiger le rapport-1 et 1 et 1.
+
+Bug réplication stoppée.
+	•Modification de l'expiration du mot de passe de l'utilisateur sqlreplicator (compte windows sur renecore)
+
+Pères de longueur zéro au lieu de null, dans tindividus - urgent.
+	•Préparation des scripts de mise à jour.
+	•Corriger le bug, sur toutes les instances (sauf faucon)
+	•Mettre à jour tous les pères de longueur zéro à null.
+	•Vérifier que d'autres observations texte liées à tindividu ne mettent pas à jour le champ correspondant de tindividu avec une chaîne de longueur zéro.
+	•Déployer.
+
+Bug d'affichage.
+	•Si ma langue est définie sur english, lorsque je veux rechercher un oiseau l'interface m'affiche : ring number, aussitôt après avoir cliquer sur ok, l'affichage se remet en français.
+
+Le répertoire apptempfiles dbm ne se vide pas automatiquement.
+	•Résoudre le problème.

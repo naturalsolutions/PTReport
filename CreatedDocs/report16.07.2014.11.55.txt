@@ -1,0 +1,237 @@
+
+Déversionner tous les répertoires vieuxcode sur raf.
+	•Déversionner tous les répertoires vieuxcode sur raf, et supprimer les répertoires inutiles 
+
+Référence non valide dans les sps.
+	•La procédure stockée pr_tlog_selectonewtlog_fk_idlogic fait référence à une table tusers elle est inexistante à priori, corriger sinon commenter ici prévenir fb quand ok.
+
+Archiver et supprimer toutes les procédures stockées liées à tbug.
+	•Archiver et supprimer toutes les procédures stockées liées à tbug.
+
+Préparation mission maroc.
+	•Vérifier toutes les requêtes - 5.
+	•Mettre au clair les notes - 2.
+	•Refaire le tour des projets - 2.
+
+Utilité de la vue eleveurs.
+	•Tester l'utilité de la vue.
+
+Login à erelevé impossible.
+	•Réattribution des droits et modification de mot de passe.
+
+Déploiement de la base securite pour erelevé
+	•Analyse du contenu des tables avec des id utilisateurs, préparation des requêtes d'update.
+	•Détermination de la stratégie de déploiement.
+	•Préparation des vues de remplacement des tables de la base ecwp_track_securite(pipe_securite\ereleve\vues ecwp_track_securite)
+	•Script des procédures stockées de connexion pour erelevé pour le narc et ecwp.
+	•Exécuter le code sql de basculement entre les deux bases de données.
+	•Tester la nouvelle version de erelevé
+	•Modification du code d'erelevé pour charger des vues à la place de tables.
+
+Homogénéiser les unités (tunite)
+	•Faire une nouvelle liste des unités de mesure, fusionnant le contenu de tunite de toutes les instances (sauf ecwp_track_faucon) :
+- ajouter _labelfr et _labelen dans la table ;
+- mettre de nouveaux pk_id ;
+- garder la correspondance entre les anciens pk_id et les nouveaux, pour chaque instance ;
+- exprimer les unités autant que possible selon le système international d'unités.
+	•Chercher à savoir ((or, fb) à quoi servent :
+e-aa-b-nnnn
+e-aa-w-nnnn
+aa-n-nn-p
+aa-nnnn
+supprimer car inutile.
+	•Autres unités inutilisées dans la table des unités ?
+evaluer utilité potentielle
+supprimer si besoin.
+	•Faire script de màj
+sur chaque instance :
+- désactiver iis
+- mettre à jour la table tunite des différentes instances
+- mettre à jour tobservationTobs_unite
+- mettre à jour les protocoles
+réactiver iis.
+	•Ajout de nouvelles unités à des observations existantes.
+
+Homogénéiser tactivite et mettre à jour en cascade tprotocole.
+	•Homogénéiser tactivite : labels fr/en.
+	•Mettre à jour en cascade tprotocole, dans toutes les instances.
+	•Mettre à jour en cascade tprotocole, a raf.
+
+Bug à l'import du protocole check et insémination.
+	•Optimisation de la règle d'import pr_check_emptyvaluesnullingprocess.
+
+Ecwp_track_undu - nettoyage du protocole eclosion, champ [bague adulte]
+	•Sélectionner les lignes de tdchar contenant les bagues juvéniles du protocole eclosion
+attention :
+- certaines bagues ne sont pas formatées pareil dans eclosion et tindividus ;
+- certaines bagues juvéniles manquent dans la série, ex : 98or04, 98or12, 98or24, 98or25, 98or79, 98or88, 98yel01 à 98yel63, 98yel100, => voir si possible avec yann et christelle/eric pourquoi (certains poussins morts prématurément jamais saisis dans track ???) ;
+- certaines bagues représentent des nids - ex : 02n02n - et sont à exclure de la manip.
+	•Remplacer ces valeurs par la bague d'adulte correspondante, reprise de tindividus.
+	•Si certains individus n'ont pas de protocole eclosion, les lister, en informer jeff et éventuellement yann le galloudec.
+	•Importer les bagues juvéniles dans le protocole bague de couleur (lié au champ tind_baguejuvenile), en veillant à ne pas effacer des bagues juvéniles qui ne seraient pas de l'ecwp (bagues de l'élevage d'origine oiseaux arrivés après leur éclosion = "adultes") pour les individus avec protocole eclosion prendre date d'eclosion comme date de saisie et pour les individus sans protocole eclosion prendre la premiere date de saisie 'de sa vie) comme date de saisie.
+
+Créer une vue "evaluation-morphologique_avec_catégorie"
+	•Créer la vue attribuant une catégorie aux individus avant relaché, avec tous les champs de la table dboEvaluation_morphologique et ajouter champs "catégorie" nom de la vue : "evaluation_morphologique_avec_catégorie" implémenter sur toutes les instances - 2 et 1.
+
+Problème ECCH message d'erreur lors d'un export est incohérent.
+	•Truncate de la table texport et suppression des logs sauf pour les modifications de protocoles ou d'observations.
+
+Préparation oral.
+	•Préparation oral.
+
+Nouveau lifting de la page individu.
+	•Revoir la page selon le modèle 2.
+
+TindividusTind_statuselevage : changer de char(20) en varchar(50) - a faire en inter-saison.
+	•Maj du type du champ tindividusTind_statuselevage.
+
+Securite - désactivation d un user génère un bug.
+
+Interface du thesaurus.
+	•Centrer les block - 1.
+	•Bordure partout 
+	•Interface homogene - 2.
+	•Faire et griser un peu le panel de droite - 2.
+
+Bug de liste des users dans securite.
+	•Trouver l'origine du problème, créer les requêtes d'update-?
+
+Problème d'affichage pour le treeview.
+	•Correction de l'affichge du treeview pour que "customisé" soit affiché à la place d'"interdit" lorsque l'un des noeuds enfant affiche "customisé"
+
+Amélioration de ptreport.
+	•Faire disparaitre les prints, ajouter logo ns et un titre, rajouter les raccourcis : db, màj, bdd.
+	•Rajouter un dropdown menu de projets et un dropdown menu de users avec leur token automatiquement enregistrés (en dur spas grave)
+	•Créer un lien vers le rapport 
+	•Tester en décomptant précisément le nombre de stories.
+
+Amélioration, correction ptreport.
+	•Intégrer la traduction du raccourcis bdd, correction des fins de lignes, éviter les duplications -1 
+
+Vérifier mise à jour raf.
+	•Vérifier mise à jour raf (bdd)
+
+Securite : bug résiduel avec 'tuse_isworking' - urgent.
+	•Correction de la page utilisateursAspx, remplacement des is_working par observer.
+	•Rechercher les autres fichiers pouvant comporter le problème au moyen de la recherche dans une solution de visual studio tester l'application.
+
+Supprimer les utilisateurs obsolètes.
+	•Tester l'utilité (données rattachées) des utilisateurs bizarres (test, test2, temp) et les supprimer au besoin (voir avec les autres applications : erelevé et ecollection)
+
+Securite - la recherche de noms comprenant un espace de marche pas.
+	•Implémenter la recherche globale.
+
+Securite - mettre le champ login en lecture seule.
+
+Securite - listes déroulantes inutiles, à supprimer.
+	•Modifier les options de pages (meta ou autres)
+
+Securite - la recherche d'un utilisateur ne marche pas, si le nom de l'utilisateur a été entré par coller.
+	•Rajouter un message d'échec de la recherche si aucune occurrence n'a été trouvée.
+
+L'élevage du qatar a son nom définitif : rawdat al-faras houbara breeding center - mettre à jour l'interface.
+	•Mettre à jour l'interface : mainAspx
+raf --> rafhbc
+rawdat al faras --> rawdat al faras houbara breeding center.
+
+Débugger le repository git hub securite.
+	•Nettoyer le repo pour les fichiers en conflit.
+	•Mettre un Gitignore pour projet visual studio.
+	•Mettre en place le déploiement automatique de l'appli avec nodeJs et github-1 et 1.
+
+Securite - accordéon de la fiche utilisateur à revoir.
+	•Supprimer accordéons sur toutes les pages et choisir des titres fins.
+
+Liste des derniers utilisateurs à masquer après recherche d'utilisateur.
+	•Masquer la liste des derniers utilisateurs après recherche d utilisateur.
+
+Securite - liste des derniers utilisateurs à améliorer.
+	•Afficher, si facilement réalisable, la liste des derniers utilisateurs créés ou mis à jour (y compris en ce qui concerne un changement de droit)
+sinon, enlever la liste des derniers utilisateurs.
+	•À la création d'un user mettre la meme date pr date de creation et date de modification filtrer sur la date de modification la plus récente.
+
+Securite - problèmes d'affichage.
+	•Remplacer le titre de la fenêtre par "applications reneco - securite" ou plus simplement "securite"
+	•Remplacer "départements & langue" par "départements et langue"
+
+Renecore securite - attribution des droits : track_undu (toutes instances) n'apparaît pas.
+
+Vue listant les valeurs de tdchar correspondant à des champs listes déroulantes, mais ne correspondant pas à une entrée de ces listes.
+	•Faire la vue.
+	•L'implémenter dans toutes les instances, sauf ecwp_track_faucon.
+
+Ajouter une couche métier à l'application securite.
+	•Créer un nouveau projet avec autant de fichiers Cs que d'objet ef copier le code de surcharge dans leurs fichiers respectifs.
+	•Partout ou est appelé un objet ef, faire dériver l'appel sur les nouvelles classes.
+	•Modifier la base de données, rafraichir depuis ef et tester.
+
+Force du mot de passe.
+	•Implémenter un algorithme de calcul de force de mot de passe.
+	•Vérifier le mot de passe à la saisie et informer l'utilisateur, tester.
+
+Amélioration appli securité
+	•Implémenter la ns-ui-bar de gb pour le projet securite-2 et 1.
+
+Rapport mission.
+	•Rediger doc rapport de mission selon modèle 
+
+Installation du nouveau disque dur.
+	•Backup et changement de matériel.
+	•Réinstaller la machine et tous les logiciels14.
+
+Rédiger documentation sur la communication entre ecoll et track.
+	•Rédiger documentation sur la communication entre ecoll et track.
+
+Supprimer les tables et procédures stockées liées aux régimes alimentaires.
+	•Création d'un script de suppression des tables : taliments, tregime, tquantité et toutes les procédures stockées associées.
+
+Créer une page dans l'appli où l'on peut gérer les unités.
+	•Créer la story-1 et 1 et 1.
+
+Bug de la page typesAspx.
+	•Correction de la page typesAspx.
+
+Renommage des champs utilisant la table tuser.
+	•Renommage des champs suivants : timp_fk_tusr_id, tmod_fk_tusr_id, tsai_fk_tusr_id, treq_fk_tusr_id, en utilisant la nomenclature tuse au lieu de tusr script des modifications.
+	•Script de renommage de toutes les procédures stockées impliquées (script database et modification)
+	•Tests.
+	•Renommer tlog_user_id selon la nomenclature Fk.
+	•Mettre à jour les classes.
+
+Tlog_user_id = 0, d'où cela provient?
+	•Recherche l'origine de l'enregistrement de tlog_user_id = 0 et réfléchir à une solution alternative 
+	•Test de session à la suppressionb.
+	•Correction des différents endroit ou la redirection se faisait par rapport à l'adresse relative de la page de login.
+	•Remise en place du testeur de session dans la master page.
+
+Dans la page typeAspx afficher un message comme quoi la validation a marché
+	•Pour la page typeAspx, lorsque l'on clique sur "valider" faire apparaitre un message traduit qui confirme la validation.
+
+Bug interface d'export.
+	•Cacher le bloc des erreurs si aucune erreur n'a été constatée durant le process cf screenshot.
+
+Implémenter le "tous" dans les menus déroulants de la page d'historique d'import.
+	•Au lieu de " " ajouter "tous" en tête des menus déroulants d'utilisateurs de la page importrecapAspx voir dans l'application si ce doit être ajouté ailleurs.
+	•Tests.
+
+Traduire le bouton "actualiser les formulaires"
+	•Traduire le bouton "actualiser les formulaires" de la page typeAspx.
+
+Rapport mensuel d'activité
+	•Rédiger le rapport-1 et 1 et 1.
+
+Bug réplication stoppée.
+	•Modification de l'expiration du mot de passe de l'utilisateur sqlreplicator (compte windows sur renecore)
+
+Pères de longueur zéro au lieu de null, dans tindividus - urgent.
+	•Préparation des scripts de mise à jour.
+	•Corriger le bug, sur toutes les instances (sauf faucon)
+	•Mettre à jour tous les pères de longueur zéro à null.
+	•Vérifier que d'autres observations texte liées à tindividu ne mettent pas à jour le champ correspondant de tindividu avec une chaîne de longueur zéro.
+	•Déployer.
+
+Bug d'affichage.
+	•Si ma langue est définie sur english, lorsque je veux rechercher un oiseau l'interface m'affiche : ring number, aussitôt après avoir cliquer sur ok, l'affichage se remet en français.
+
+Le répertoire apptempfiles dbm ne se vide pas automatiquement.
+	•Résoudre le problème.

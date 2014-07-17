@@ -1,0 +1,45 @@
+
+
+	•Modification de la gestion des utilisateurs : recréation des procédures stockées suivantes en tenant compte de la nouvelle architecture, checkpassword, selectonewtuse_login, selectallactive, selectone, selectallModification des classes associées (allègement pour empêcher la suppression et la modification)Déplacement des fichiers dans le pipe_securite.
+	•Modification de la gestion des applications : recréation des procédures stockées suivantes en tenant compte de la nouvelle architecture, selectallwtusr_pk_id, selectoneModification des classes associées (allègement pour empêcher la suppression et la modification)Déplacement des fichiers dans le pipe_securite.
+	•Modification de la gestion des autorisations : recréation des procédures stockées suivantes en tenant compte de la nouvelle architecture, getroleModification des classes associées (allègement pour empêcher la suppression et la modification)Déplacement des fichiers dans le pipe_securite.
+	•Test de fonctionnement de track avec la nouvelle base.
+	•Mise à jour des vues d'export impliquant des données de securité.
+
+
+	•Faire l'exercice sql de recrutement.
+
+
+	•Ajout d'une table de relation "tuserdepartements" entre départements et users contenant les champs suivants : tudp_pk_id, tudp_fk_tuse_id, tudp_fk_tdep_id, ajouter les contraintes de relations fk.
+	•.
+	•.
+	•.
+	•.
+	•.
+
+
+	•Reproduire les résultats de la fiche d'un oiseau sur l'application track, du côté base de données au niveau : de l'age (procédure stockée existante), liste des protocoles ou il est impliqué (création d'une vue ou d'une procédure).
+	•Pour un oiseau donné, trouver toutes les positions dans lequel il a étéCréation d'une procédure ou plus sioux, utilisation de procédures déjà existantes.
+
+
+	•.
+
+
+	•.
+	•.
+	•.
+
+
+	•.
+	•.
+	•.
+	•.
+	•.
+
+
+
+
+
+
+
+

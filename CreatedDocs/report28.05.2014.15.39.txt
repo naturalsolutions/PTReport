@@ -1,0 +1,29 @@
+mise à jour de track pour intégrer la nouvelle base securite
+modification de la gestion des utilisateurs : recréation des procédures stockées suivantes en tenant compte de la nouvelle architecture, checkpassword, selectonewtuse_login, selectallactive, selectone, selectall. modification des classes associées (allègement pour empêcher la suppression et la modification). déplacement des fichiers dans le pipe_securite. archivage du vieux code-7
+modification de la gestion des applications : recréation des procédures stockées suivantes en tenant compte de la nouvelle architecture,  selectallwtusr_pk_id, selectone. modification des classes associées (allègement pour empêcher la suppression et la modification). déplacement des fichiers dans le pipe_securite. archivage du vieux code-2
+modification de la gestion des autorisations : recréation des procédures stockées suivantes en tenant compte de la nouvelle architecture, getrole. modification des classes associées (allègement pour empêcher la suppression et la modification). déplacement des fichiers dans le pipe_securite. archivage du vieux code-1
+test de fonctionnement de track avec la nouvelle base.-3
+mise à jour des vues d'export impliquant des données de securité.-2
+test sql
+faire l'exercice sql de recrutement.-1
+permettre aux utilisateurs d'appartenir à plusieurs départements 
+ajout d'une table de relation "tuserdepartements" entre départements et users contenant les champs suivants : tudp_pk_id, tudp_fk_tuse_id, tudp_fk_tdep_id, ajouter les contraintes de relations fk. ajout d'un index sur la fk départements (? sur la fk users ?) -1
+modifier les données existantes pour s'adapter à la nouvelle table, modification des scripts de migration de missour vers la nouvelle base securité -1
+créer un nouveau répertoire pipe spécifique à la migration de sécurité -0
+modifier les requêtes sql qui obtiennent une liste d'utilisateurs par département (ex : personnel vétérinaire dans ttype) -2 et 1
+modifier le code associé, page départements, page créeruser, page detailsuser, fichier departementsbll -2
+permettre l'ajout de ddl pour des departements supplémentaires -2
+requetage
+reproduire les résultats de la fiche d'un oiseau sur l'application track, du côté base de données au niveau : de l'age (procédure stockée existante), liste des protocoles ou il est impliqué (création d'une vue ou d'une procédure).3 et 1
+pour un oiseau donné, trouver toutes les positions dans lequel il a été. création d'une procédure ou plus sioux, utilisation de procédures déjà existantes.2 et 1
+etude de la partie technique de l'application
+présenter l'architecture générale-2 et 2
+rédiger une doc de toutes les étapes de mise en place de l'application sécurité
+déployer sur serveur 2008 pour procédure iis (hors réplication) -4 et 1
+tests-2
+rédaction des étapes de la procédure d'installation-2
+crypter les mots de passe de la table tusers
+mise en place d'une réplication depuis renecore vers le serveur de missour via https
+page de login : masquer le lien "changer votre mot de passe"
+corriger la réplication d'enjil et de sas
+vérifier toutes les bases cibles de la fonction getparameter des bases export

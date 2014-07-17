@@ -1,0 +1,65 @@
+
+Préparation mission maroc.
+	•Vérifier toutes les requêtes - 5.
+	•Mettre au clair les notes - 2.
+	•Refaire le tour des projets - 2.
+
+Utilité de la vue eleveurs.
+	•Tester l'utilité de la vue.
+
+Login à erelevé impossible.
+	•Réattribution des droits et modification de mot de passe.
+
+Déploiement de la base securite pour erelelvé
+	•Analyse du contenu des tables avec des id utilisateurs, préparation des requêtes d'update.
+	•Détermination de la stratégie de déploiement.
+	•Préparation des vues de remplacement des tables de la base ecwp_track_securite(pipe_securite\ereleve\vues ecwp_track_securite)
+	•Script des procédures stockées de connexion pour erelevé pour le narc et ecwp.
+	•Exécuter le code sql de basculement entre les deux bases de données.
+	•Tester la nouvelle version de erelevé
+	•Modification du code d'erelevé pour charger des vues à la place de tables.
+
+Homogénéiser les unités (tunite)
+	•Faire une nouvelle liste des unités de mesure, fusionnant le contenu de tunite de toutes les instances (sauf ecwp_track_faucon) :
+- ajouter _labelfr et _labelen dans la table ;
+- mettre de nouveaux pk_id ;
+- garder la correspondance entre les anciens pk_id et les nouveaux, pour chaque instance ;
+- exprimer les unités autant que possible selon le système international d'unités.
+	•Chercher à savoir ((or, fb) à quoi servent :
+e-aa-b-nnnn
+e-aa-w-nnnn
+aa-n-nn-p
+aa-nnnn
+supprimer car inutile.
+	•Autres unités inutilisées dans la table des unités ?
+evaluer utilité potentielle
+supprimer si besoin.
+	•Faire script de màj
+sur chaque instance :
+- désactiver iis
+- mettre à jour la table tunite des différentes instances
+- mettre à jour tobservationTobs_unite
+- mettre à jour les protocoles
+réactiver iis.
+	•Ajout de nouvelles unités à des observations existantes.
+
+Homogénéiser tactivite et mettre à jour en cascade tprotocole.
+	•Homogénéiser tactivite : labels fr/en.
+	•Mettre à jour en cascade tprotocole, dans toutes les instances.
+	•Mettre à jour en cascade tprotocole, a raf.
+
+Bug à l'import du protocole check et insémination.
+	•Optimisation de la règle d'import pr_check_emptyvaluesnullingprocess.
+
+Ecwp_track_undu - nettoyage du protocole eclosion, champ [bague adulte]
+	•Sélectionner les lignes de tdchar contenant les bagues juvéniles du protocole eclosion
+attention :
+- certaines bagues ne sont pas formatées pareil dans eclosion et tindividus ;
+- certaines bagues juvéniles manquent dans la série, ex : 98or04, 98or12, 98or24, 98or25, 98or79, 98or88, 98yel01 à 98yel63, 98yel100, => voir si possible avec yann et christelle/eric pourquoi (certains poussins morts prématurément jamais saisis dans track ???) ;
+- certaines bagues représentent des nids - ex : 02n02n - et sont à exclure de la manip.
+	•Remplacer ces valeurs par la bague d'adulte correspondante, reprise de tindividus.
+	•Si certains individus n'ont pas de protocole eclosion, les lister, en informer jeff et éventuellement yann le galloudec.
+	•Importer les bagues juvéniles dans le protocole bague de couleur (lié au champ tind_baguejuvenile), en veillant à ne pas effacer des bagues juvéniles qui ne seraient pas de l'ecwp (bagues de l'élevage d'origine oiseaux arrivés après leur éclosion = "adultes") pour les individus avec protocole eclosion prendre date d'eclosion comme date de saisie et pour les individus sans protocole eclosion prendre la premiere date de saisie 'de sa vie) comme date de saisie.
+
+Créer une vue "evaluation-morphologique_avec_catégorie"
+	•Créer la vue attribuant une catégorie aux individus avant relaché, avec tous les champs de la table dboEvaluation_morphologique et ajouter champs "catégorie" nom de la vue : "evaluation_morphologique_avec_catégorie" implémenter sur toutes les instances - 2 et 1.

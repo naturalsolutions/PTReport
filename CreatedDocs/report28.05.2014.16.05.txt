@@ -1,0 +1,56 @@
+
+mise à jour de track pour intégrer la nouvelle base securite.
+	•modification de la gestion des utilisateurs : recréation des procédures stockées suivantes en tenant compte de la nouvelle architecture, checkpassword, selectonewtuse_login, selectallactive, selectone, selectall. modification des classes associées (allègement pour empêcher la suppression et la modification). déplacement des fichiers dans le pipe_securite. archivage du vieux code.
+	•modification de la gestion des applications : recréation des procédures stockées suivantes en tenant compte de la nouvelle architecture, selectallwtusr_pk_id, selectone. modification des classes associées (allègement pour empêcher la suppression et la modification). déplacement des fichiers dans le pipe_securite. archivage du vieux code.
+	•modification de la gestion des autorisations : recréation des procédures stockées suivantes en tenant compte de la nouvelle architecture, getrole. modification des classes associées (allègement pour empêcher la suppression et la modification). déplacement des fichiers dans le pipe_securite. archivage du vieux code.
+	•test de fonctionnement de track avec la nouvelle base.
+	•mise à jour des vues d'export impliquant des données de securité.
+
+test sql.
+	•faire l'exercice sql de recrutement.
+
+permettre aux utilisateurs d'appartenir à plusieurs départements 
+	•ajout d'une table de relation "tuserdepartements" entre départements et users contenant les champs suivants : tudp_pk_id, tudp_fk_tuse_id, tudp_fk_tdep_id, ajouter les contraintes de relations clé étrangère ajout d'un index sur la clé étrangère départements (? sur la clé étrangère users ?) 
+	•modifier les données existantes pour s'adapter à la nouvelle table, modification des scripts de migration de missour vers la nouvelle base securité 
+	•créer un nouveau répertoire pipe spécifique à la migration de sécurité 
+	•modifier les requêtes sql qui obtiennent une liste d'utilisateurs par département (ex : personnel vétérinaire dans ttype) -2 et 1
+	•modifier le code associé, page départements, page créeruser, page detailsuser, fichier departementsbll 
+	•permettre l'ajout de ddl pour des departements supplémentaires 
+
+requetage.
+	•reproduire les résultats de la fiche d'un oiseau sur l'application track, du côté base de données au niveau : de l'age (procédure stockée existante), liste des protocoles ou il est impliqué (création d'une vue ou d'une procédure).3 et 1
+	•pour un oiseau donné, trouver toutes les positions dans lequel il a été. création d'une procédure ou plus sioux, utilisation de procédures déjà existantes.2 et 1
+
+etude de la partie technique de l'application.
+	•présenter l'architecture générale-2 et 2
+
+rédiger une doc de toutes les étapes de mise en place de l'application sécurité
+	•déployer sur serveur 2008 pour procédure iis (hors réplication) -4 et 1
+	•tests.
+	•rédaction des étapes de la procédure d'installation.
+
+crypter les mots de passe de la table tusers.
+	•spike sha1 et autres algos hashage 
+	• verifier taille champs varchar, modification des procédure stockée qui utilisent le password, modification du code de l'appli sécurité -2 et 1
+	•modifier le script de migration des données de missour pour cryptage des mots de passe.
+	•modifier le code du login 
+	•tester.
+
+mise en place d'une réplication depuis renecore vers le serveur de missour via https.
+	•rédaction d'une procédure de mise en place de la réplication depuis le serveur centralisé
+	•création d'une table témoin, avec des champs de plusieurs types sur renecore et remplissage.
+	•etude d'un tuto de réplication over https.
+	•configuration des paramètres réseau.-1 et 1
+	•mise en place et configuration de la publication.
+	•mise en place et configuration de la souscription.
+	•tests.
+
+page de login : masquer le lien "changer votre mot de passe"
+	•masquer le lien, dans toutes les instances outarde/ganga/oedic.supprimer le code.
+
+corriger la réplication d'enjil et de sas.
+	•rajouter les indexes dans les propriétés des articles répliqués.
+
+vérifier toutes les bases cibles de la fonction getparameter des bases export.
+	•vérifier sur toutes les instances que la fonction getparameter pointe sur la bonne base mère.
+	•vérifier également que toutes les lignes id in securite de la table tparametrers pointe vers la bonne valeur de pk d'instance.
