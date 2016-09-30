@@ -124,7 +124,7 @@ namespace WebApplication2
                 }
             }
             ////Si la phrase se finie par -'numéro' on l'enlève
-            var regex = new Regex("\\-[0-9]+[A-Z+]*.?$");
+            var regex = new Regex("\\.\\-[0-9\\+\\sa-z]+$");
             if (regex.IsMatch(str))
             {
                 str = regex.Replace(str, "");
