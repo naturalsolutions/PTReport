@@ -1,5 +1,5 @@
 ﻿function displayTasks(tasks) {
-    console.log("displayTasks");
+    console.log("displayTasks", tasks);
     $(tasks).each(function (index, task) {
         tasksTab.push(task);
         var strHTML = "";
@@ -9,16 +9,16 @@
     console.log(tasksTab);
 }
 
-function displayStories(stories) {
-    console.log("displayStories");
+function displayStories(stories, optProjectId) {
+    console.log("displayStories", stories);
     var html = '';
     html += '<div class="row">';
     html += '<div class="span10 offset1">';
-    html += '<h1>Stories preview -> ' + $(stories).length + ' </h1>';
+    html += '<h2>Project ID -> ' + optProjectId + ' </h2>';
+    html += '<h2>Stories preview -> ' + $(stories).length + ' </h2>';
     html += '</div>';
     html += '</div>';
     for (var i = 0; i < stories.length; i++) {
-        storiesTab.push(stories[i]);
         //html += '<li id="' + stories[i].id + '">' + stories[i].name + '</li>';
         html += '<div class="row">';
         html += '<div class="span10 offset1" id="storiesDiv">';
@@ -27,6 +27,8 @@ function displayStories(stories) {
         html += '</ul></div>';
         html += '</div>';
     }
-    $('#resultDiv').html(html);
-    console.log(storiesTab);
+    storiesTab = stories;
+    $('#resultDiv').append(html);
+    console.log('storiesTab', stories);
+    getTasks(stories,optProjectId);
 }

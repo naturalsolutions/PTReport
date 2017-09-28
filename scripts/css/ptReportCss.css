@@ -9,3 +9,28 @@
 	margin-top: 3px;
 	margin-left: 11px;
 }
+.hidden{
+    display: none;
+}
+.left{
+    float: left;
+}
+.right{
+    float: right;
+}
+label.CheckLabel {
+    display: block;
+    padding-left: 15px;
+    text-indent: -15px;
+}
+
+input.CheckBoxLabel {
+    width: 13px;
+    height: 13px;
+    padding: 0;
+    margin: 0;
+    vertical-align: bottom;
+    position: relative;
+    top: -1px;
+    *overflow: hidden;
+}

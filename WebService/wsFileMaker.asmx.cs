@@ -54,6 +54,31 @@ namespace WebApplication2
             public string url { get; set; } 
         }
 
+        public struct taskedStory
+        {
+            public string accepted_at { get; set; }
+            public string created_at { get; set; }
+            public string current_state { get; set; }
+            public int estimate { get; set; }
+            public int id { get; set; }
+            public string kind { get; set; }
+            public string name { get; set; }
+            public int owned_by_id { get; set; }
+            public int planned_iteration_number { get; set; }
+            public int project_id { get; set; }
+            public int requested_by_id { get; set; }
+            public string story_type { get; set; }
+            public string updated_at { get; set; }
+            public string url { get; set; }
+            public List<task> tasks { get; set; }
+        }  
+
+        public struct project
+        {
+            public string name { get; set; }
+            public List<taskedStory> stories { get; set; }
+        }
+
         [WebMethod]
         public string createFile(List<task> tasks, List<story> stories)
         {
@@ -89,6 +114,50 @@ namespace WebApplication2
 
             File.AppendAllLines(path + filename, finalStrings);
           
+            return infos[0];
+        }
+
+        
+        [WebMethod]
+        public string createFileFromTab(List<project> projects)
+        {
+            finalStrings = new List<string>();
+
+            var filename = "report" + DateTime.Now.ToString("dd.MM.yyy.HH.mm") + ".txt";
+            filename.Replace("/", "");
+            String[] infos = new String[2];
+            infos[0] = filename;
+            var path = Server.MapPath("~/CreatedDocs/");
+            infos[1] = path + filename;
+            if (File.Exists(path + filename))
+            {
+                File.Delete(path + filename);
+                File.Create(path + filename).Close();
+            }
+            else
+            {
+                File.Create(path + filename).Close();
+            }
+            foreach (project project in projects)
+            {
+                finalStrings.Add("--------------------------------------------------");
+
+                finalStrings.Add("Nom du projet : " + project.name);
+                foreach (taskedStory story in project.stories)
+                {
+                    finalStrings.Add(formatString(story.name));
+                    foreach (task task in story.tasks)
+                    {
+                        if (task.story_id == story.id)
+                        {
+                            finalStrings.Add(formatString(task.description, true));
+                        }
+                    }
+                }
+            }
+
+            File.AppendAllLines(path + filename, finalStrings);
+
             return infos[0];
         }
 

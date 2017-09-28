@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ï»¿<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -14,6 +14,8 @@
     <!-- Add custom CSS here -->
     <link href="scripts/css/stylish-portfolio.css" rel="stylesheet" />
     <link href="scripts/font-awesome/css/font-awesome.min.css" rel="stylesheet" />   
+    <link href="scripts/css/ptReportCss.css" rel="stylesheet" />
+
 </head>
 
 <body>
@@ -50,7 +52,7 @@
            <select id="sctUsers">
                 <option value="" selected></option>
                 <option value="7632a665cd74a53a9c50e40e5698f715">Tom Lopez</option>
-                <option value="b4a752782f711a7c564221c2b0c2d5dc">Frédéric Berton</option>
+                <option value="b4a752782f711a7c564221c2b0c2d5dc">FrÃ©dÃ©ric Berton</option>
             </select>
         </div>
     </div>
@@ -60,6 +62,17 @@
     <div id="action" class="intro">
         <div class="grid">
             <div class="row-fluid">
+                <div class="span2 offset3">
+                    Choose project selection mode :
+                </div>
+                <div class="span3 offset1 ">
+                    Single project : <input type="radio" name="selectMode" value="single" />
+                    Multiple projects : <input type="radio" name="selectMode" value="multiple" />
+                </div>
+            </div>
+        </div>
+        <div class="grid hidden project" id="NormaleMode">
+            <div class="row-fluid">
                 <div class="span2 offset2">
                     Select your project</br>
                     <select id="sctProjects">  
@@ -68,7 +81,7 @@
                 </div>
                 <div class="span3 offset1 ">
                     Select a start date</br>
-                    <input id="datepicker"></input>                    
+                    <input id="datepicker" class="datepick"></input>                    
                 </div>
                 <div class="span3">
                     <label class="checkbox">
@@ -106,6 +119,33 @@
                     <a id="valid" href="#action" class="btn btn-default btn-lg">Get Storys</a>
                     <a id="generer" href="#action" class="btn btn-default btn-lg">Generate File</a>
                 </div>
+            </div>
+        </div>
+        <div id="MultipleMode" class="grid hidden project">
+            <div class="row-fluid">
+                <div class="span2 offset2">
+                    Select your project
+                    </br>
+                    <button id="selectAll">Select All</button>
+                    </br>
+                    <div id="sctProjectsMultiple">
+                    </div>
+                </div>
+                <div class="row-fluid">
+                    <div class="span3 offset1 ">
+                        Select a start date</br>
+                        <input id="datepickerMultiple" class="datepick"></input>
+                    </div>
+                    <div class="span3 ">
+                        Select a end date (optional)</br>
+                        <input id="datepickerMultipleEnd" class="datepick"></input>
+                    </div>
+                    <div class="span4 offset5">
+                        <a id="validMultiple" href="#action" class="btn btn-default btn-lg">Get Storys</a>
+                        <a id="genererMultiple" href="#action" class="btn btn-default btn-lg">Generate File</a>
+                    </div>
+                </div>
+                
             </div>
         </div>
     </div>
@@ -168,12 +208,47 @@
     <script src="./scripts/PivotalDataFile.js"></script>
      <script>
          $(document).ready(function () {
-             $("#datepicker").datepicker({ dateFormat: 'mm/dd/yy' });
+             $(".datepick").datepicker({ dateFormat: 'mm/dd/yy' });
              $("#sctUsers").change(function () { token = $("#sctUsers").val(); console.log('token : ' + token); window.location = "#action"; getAllProjects(); });
              $("#sctProjects").change(function () { projectId = $("#sctProjects").val(); fillInformation(projectId); console.log(projectId); });
              $("#datepicker").change(function () { date = $("#datepicker").val(); console.log(date); });
+             $("#datepickerMultipleEnd").change(function () { date = $("#datepickerMultipleEnd").val(); console.log(date); });
+             $("#datepickerMultiple").change(function () { dateEnd = $("#datepickerMultiple").val(); console.log(date); });
+
              $("#valid").click(function () { run(); });
+             $("#validMultiple").click(function () { runMultiple(); });
              $("#generer").click(function () { sendNFormatData(storiesTab, tasksTab); });
+             $("#genererMultiple").click(function () { sendNFormatDataMultiple(multipleProjects); });
+             $("#selectAll").click(function () {
+                 $(this).parent().find('input:checkbox').each(function () { $(this).prop("checked", !$(this).prop("checked")) });
+             })
+
+             $('input[name=selectMode]').change(function () {
+                 var mode = $('input[name=selectMode]:checked').val();
+                 switch (mode) {
+                     case 'single':
+                         if ($('#NormaleMode').hasClass('hidden')) {
+                             $('#NormaleMode').removeClass('hidden');
+                         }
+                         if (!$('#MultipleMode').hasClass('hidden')) {
+                             $('#MultipleMode').addClass('hidden');
+                         }
+                         feedProjectsSelection('single');
+                         break;
+                     case 'multiple':
+                         if ($('#MultipleMode').hasClass('hidden')) {
+                             $('#MultipleMode').removeClass('hidden');
+                         }
+                         if (!$('#NormaleMode').hasClass('hidden')) {
+                             $('#NormaleMode').addClass('hidden');
+                         }
+                         feedProjectsSelection('multiple');
+                         break;
+                     default:
+                         $('div.project').addClass('hidden');
+                 }
+             });
+             getAllProjects();
          });
     </script>
     <!-- Custom JavaScript for the Side Menu and Smooth Scrolling -->

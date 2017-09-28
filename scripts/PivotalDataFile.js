@@ -20,6 +20,25 @@ function sendNFormatData(stories, tasks) {
     });;
 }
 
+function sendNFormatDataMultiple(projects) {
+    $.ajax({
+        url: './WebService/wsFileMaker.asmx/createFileFromTab',
+        type: 'POST',
+        datatype: 'json',
+        contentType: "application/json; charset=utf-8",
+        data: "{projects : " + JSON.stringify(projects) + "}"
+    }).success(function (data) {
+        console.log('sendNFormatData(stories, tasks)');
+        console.log(data.d);
+        window.open('CreatedDocs/' + data.d, '_blank');
+        //console.log(window.location.href);
+        //$('body').append('<a id="fileToDl" href="' + window.location.origin + '/CreatedDocs/' + data.d + '">zgueg</a>');
+        //$("#fileToDl").trigger("click");
+    }).fail(function (data) {
+        alert(data.d);
+    });;
+}
+
 function downloadURL(url) {
     url = 'CreatedDocs/' + url
     console.log(url);
