@@ -212,8 +212,8 @@
              $("#sctUsers").change(function () { token = $("#sctUsers").val(); console.log('token : ' + token); window.location = "#action"; getAllProjects(); });
              $("#sctProjects").change(function () { projectId = $("#sctProjects").val(); fillInformation(projectId); console.log(projectId); });
              $("#datepicker").change(function () { date = $("#datepicker").val(); console.log(date); });
-             $("#datepickerMultipleEnd").change(function () { date = $("#datepickerMultipleEnd").val(); console.log(date); });
-             $("#datepickerMultiple").change(function () { dateEnd = $("#datepickerMultiple").val(); console.log(date); });
+             $("#datepickerMultipleEnd").change(function () { dateEnd = $("#datepickerMultipleEnd").val(); console.log(date); });
+             $("#datepickerMultiple").change(function () { date = $("#datepickerMultiple").val(); console.log(date); });
 
              $("#valid").click(function () { run(); });
              $("#validMultiple").click(function () { runMultiple(); });
