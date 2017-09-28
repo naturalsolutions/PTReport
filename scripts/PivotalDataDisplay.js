@@ -14,7 +14,7 @@ function displayStories(stories, optProjectId) {
     var html = '';
     html += '<div class="row">';
     html += '<div class="span10 offset1">';
-    html += '<h2>Project ID -> ' + optProjectId + ' </h2>';
+    html += '<h2>Project ID -> ' + allProjects.find(x => x.id == optProjectId).name + ' </h2>';
     html += '<h2>Stories preview -> ' + $(stories).length + ' </h2>';
     html += '</div>';
     html += '</div>';
