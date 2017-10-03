@@ -11,7 +11,8 @@ function sendNFormatData(stories, tasks) {
     }).success(function (data) {
         console.log('sendNFormatData(stories, tasks)');
         console.log(data.d);
-        window.open('CreatedDocs/' + data.d,'_blank');
+        window.open('CreatedDocs/' + data.d, '_blank');
+        setTasksReported();
         //console.log(window.location.href);
         //$('body').append('<a id="fileToDl" href="' + window.location.origin + '/CreatedDocs/' + data.d + '">zgueg</a>');
         //$("#fileToDl").trigger("click");
@@ -31,6 +32,7 @@ function sendNFormatDataMultiple(projects) {
         console.log('sendNFormatData(stories, tasks)');
         console.log(data.d);
         window.open('CreatedDocs/' + data.d, '_blank');
+        setTasksReported();
         //console.log(window.location.href);
         //$('body').append('<a id="fileToDl" href="' + window.location.origin + '/CreatedDocs/' + data.d + '">zgueg</a>');
         //$("#fileToDl").trigger("click");

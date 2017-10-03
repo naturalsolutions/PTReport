@@ -1,9 +1,13 @@
-﻿var token;
+﻿//Date format ISO necessaire a PT : new Date().toISOString().split('.')[0]+"Z"
+//Get started Tasks : https://www.pivotaltracker.com/services/v5/projects/536841/stories?with_state=started&updated_after=2017-10-01T08:15:53Z
+
+var token;
 var projectId;
 var date;
 var dateEnd;
 var allProjects;
 var multipleProjects = [];
+var tasksToSetReported = [];
 
 function createCheckboxEntry(name, id) {
     var htmlCheck = '<label class="CheckLabel"><input type="checkbox" class="CheckBoxLabel" name="'+name+'" id="'+id+'" />' + name + '</label>';    
@@ -82,6 +86,7 @@ function getStoryWDate(optProjectId) {
             storiesTab = data;            
         }
         displayStories(data, optProjectId);
+        getStartedStories(optProjectId);
     });
 }
 
@@ -117,7 +122,8 @@ function getStoryW2Date(optProjectId) {
             multipleProjects.push({ 'name': projectName, 'stories': data });
             console.log('multpileprojects', multipleProjects);
         } 
-        displayStories(data, optProjectId);
+        displayStories(data, (optProjectId != null && optProjectId !== 'undefined' ? optProjectId : projectId));
+        getStartedStories((optProjectId != null && optProjectId !== 'undefined' ? optProjectId : projectId));
     });//, getTasks(optProjectId));
 }
 
@@ -134,15 +140,16 @@ function getTasks(stories, optProjectId) {
             beforeSend: function (xhr) {
                 xhr.setRequestHeader('X-TrackerToken', token);
             }
-        }).done(function (data) {
+        }).done(function (data) {           
+            var nonStartedTasks = testTasksAlreadyReported(data);
             if (optProjectId != null && optProjectId !== 'undefined') {
                 var projectName = allProjects.find(x => x.id == optProjectId).name
                 var index = multipleProjects.findIndex(x => x.name == projectName);
-                var storyIndex = multipleProjects[index].stories.findIndex(x => x.id == story.id);
-                multipleProjects[index].stories[storyIndex].tasks = data;   
+                var storyIndex = multipleProjects[index].stories.findIndex(x => x.id == story.id);                
+                multipleProjects[index].stories[storyIndex].tasks = nonStartedTasks;   
                 console.log('multpileprojects', multipleProjects);
             } 
-            displayTasks(data); 
+            displayTasks(nonStartedTasks); 
             console.log('lestaches',tasksTab);
         });
     });
@@ -221,4 +228,113 @@ function runMultiple() {
             getStoryWDate(this.id);
         })
     }
+}
+
+function getStartedStories(optProjectId) {
+    projectId = $('#sctProjects').val();
+
+
+    // on cré l'url de requete
+    var url = 'https://www.pivotaltracker.com/services/v5';
+    url += '/projects/' + (optProjectId != null && optProjectId !== 'undefined' ? optProjectId : projectId);
+    console.log('tempUrl', url);
+    url += '/stories?';
+    url += 'with_state=started';
+
+    // do API request to get story names
+    $.ajax({
+        url: url,
+        beforeSend: function (xhr) {
+            xhr.setRequestHeader('X-TrackerToken', token);
+        }
+        //on affiche les stories et on récupère les taches
+    }).done(function (data) {
+        console.log('data', data);
+        getFinishedTaskInUnfinishedStory(data, optProjectId);
+    });//, getTasks(optProjectId));
+
+}
+
+function getFinishedTaskInUnfinishedStory(stories, optProjectId) {
+    var storiesWithTasks = [];
+    $(stories).each(function () {
+        var theStory = this;
+        var url = 'https://www.pivotaltracker.com/services/v5';
+        url += '/projects/' + (optProjectId != null && optProjectId !== 'undefined' ? optProjectId : projectId);
+        url += '/stories/' + this.id;
+        url += '/tasks';
+        $.ajax({
+            url: url,
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader('X-TrackerToken', token);
+            }
+        }).done(function (data) {
+            var tasksTab = [];
+            for (var i in data) {
+                console.log('data[i]', data[i]);
+                if (data[i].complete) {
+                    //TODO : test du #
+                    data[i].project_id = optProjectId;
+                    tasksTab.push(data[i]);
+                }
+            }
+            if (tasksTab.length > 0) {
+                displayOneStory(theStory, optProjectId);
+                console.log('thestoyr', theStory);
+                storiesWithTasks.push(theStory);
+                var nonReportedTasks = testTasksAlreadyReported(tasksTab);
+                displayTasks(nonReportedTasks);
+                tasksToSetReported = tasksToSetReported.concat(nonReportedTasks);
+                console.log('tasksToSetReported', tasksToSetReported);               
+                //setTasksReported(nonReportedTasks);
+            }
+            if ($('input:radio:checked').val() == 'single') {
+                if (nonReportedTasks.length > 0) {
+                    storiesTab.push(theStory);
+                    tasksTab.push(nonReportedTasks);
+                }
+            } else {
+                if (nonReportedTasks && nonReportedTasks.length > 0) {
+                    var projectName = allProjects.find(x => x.id == theStory.project_id).name
+                    var index = multipleProjects.findIndex(x => x.name == projectName);
+                    theStory.tasks = nonReportedTasks;
+                    multipleProjects[index].stories.push(theStory);
+                   
+                }
+            }
+            console.log('tasksTab', nonReportedTasks);
+        });
+    });
+}
+
+function testTasksAlreadyReported(tasks) {
+    var nonReportedTasks = [];
+    for (var i in tasks) {
+        if (!tasks[i].description.startsWith('##')) {
+            nonReportedTasks.push(tasks[i]);
+        }
+    }
+    return nonReportedTasks;
+}
+
+function setTasksReported() {
+    $(tasksToSetReported).each(function () {
+        var dataToSend = '{"description": "##' + this.description + '"}';
+        var url = 'https://www.pivotaltracker.com/services/v5';
+        url += '/projects/' + this.project_id;
+        url += '/stories/' + this.story_id;
+        url += '/tasks/' + this.id;     
+        $.ajax({
+            url: url,
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader('X-TrackerToken', token);
+            },
+            type: 'PUT',
+            data: dataToSend,
+            contentType: 'application/json'
+            //on affiche les stories et on récupère les taches
+        }).done(function (data) {
+            
+        });//, get
+    });    
 }
