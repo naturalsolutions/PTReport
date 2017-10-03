@@ -15,7 +15,7 @@ function createCheckboxEntry(name, id) {
 }
 
 function getAllProjects() {
-    console.log("getAllProjects" + token);
+    //console.log("getAllProjects" + token);
     token = 'b4a752782f711a7c564221c2b0c2d5dc';
     var url = "https://www.pivotaltracker.com/services/v5/projects"
     $.ajax({
@@ -25,7 +25,7 @@ function getAllProjects() {
         }
     }).done(function (projects) {
         allProjects = projects;
-        console.log('allprojects', allProjects);
+        //console.log('allprojects', allProjects);
     });
 }
 
@@ -46,7 +46,7 @@ function feedProjectsSelection(type) {
 }
 
 function getStoryWDate(optProjectId) {
-    console.log("getStoryWDate");
+    //console.log("getStoryWDate");
     // récupération des parametres
     projectId = $('#sctProjects').val();
 
@@ -57,7 +57,7 @@ function getStoryWDate(optProjectId) {
     url += '/stories?filter=';
     url += ' includedone:true';
     url += ' accepted_after:' + date;
-    console.log("l'url", url);
+    //console.log("l'url", url);
     if ($("#restrUser").is(':checked')) {
         url += ' owned_by:' + $("#sctUserRestrict").val();
     }
@@ -75,13 +75,13 @@ function getStoryWDate(optProjectId) {
         }
         //on affiche les stories et on récupère les taches
     }).done(function (data) {
-        console.log('data', data);        
+        //console.log('data', data);        
 
         if (optProjectId != null && optProjectId !== 'undefined') {
-            console.log('dataTransfert', data);
+            //console.log('dataTransfert', data);
             var projectName = allProjects.find(x => x.id == optProjectId).name
             multipleProjects.push({ 'name': projectName, 'stories': data });
-            console.log('multpileprojects', multipleProjects);
+            //console.log('multpileprojects', multipleProjects);
         } else {
             storiesTab = data;            
         }
@@ -91,7 +91,7 @@ function getStoryWDate(optProjectId) {
 }
 
 function getStoryW2Date(optProjectId) {
-    console.log("getStoryWDate");
+    //console.log("getStoryWDate");
     // récupération des parametres
     projectId = $('#sctProjects').val();
 
@@ -99,14 +99,14 @@ function getStoryW2Date(optProjectId) {
     // on cré l'url de requete
     var url = 'https://www.pivotaltracker.com/services/v5';
     url += '/projects/' + (optProjectId != null && optProjectId !== 'undefined' ? optProjectId : projectId);
-    console.log('tempUrl', url);
+    //console.log('tempUrl', url);
     url += '/stories?filter=';
     url += ' includedone:true';
 
     url += ' accepted_after:' + date;
     url += ' accepted_before:' + dateEnd;
 
-    console.log('url', url)
+    //console.log('url', url)
 
     // do API request to get story names
     $.ajax({
@@ -117,10 +117,10 @@ function getStoryW2Date(optProjectId) {
         //on affiche les stories et on récupère les taches
     }).done(function (data) {
         if (optProjectId != null && optProjectId !== 'undefined') {
-            console.log('dataTransfert', data);
+            //console.log('dataTransfert', data);
             var projectName = allProjects.find(x => x.id == optProjectId).name
             multipleProjects.push({ 'name': projectName, 'stories': data });
-            console.log('multpileprojects', multipleProjects);
+            //console.log('multpileprojects', multipleProjects);
         } 
         displayStories(data, (optProjectId != null && optProjectId !== 'undefined' ? optProjectId : projectId));
         getStartedStories((optProjectId != null && optProjectId !== 'undefined' ? optProjectId : projectId));
@@ -128,7 +128,7 @@ function getStoryW2Date(optProjectId) {
 }
 
 function getTasks(stories, optProjectId) {
-    console.log("getTasks", arguments);
+    //console.log("getTasks", arguments);
     $(stories).each(function (index, story) {
         //création de l'url qui va récupérer les tache de la story
         var url = 'https://www.pivotaltracker.com/services/v5';
@@ -147,10 +147,10 @@ function getTasks(stories, optProjectId) {
                 var index = multipleProjects.findIndex(x => x.name == projectName);
                 var storyIndex = multipleProjects[index].stories.findIndex(x => x.id == story.id);                
                 multipleProjects[index].stories[storyIndex].tasks = nonStartedTasks;   
-                console.log('multpileprojects', multipleProjects);
+                //console.log('multpileprojects', multipleProjects);
             } 
             displayTasks(nonStartedTasks); 
-            console.log('lestaches',tasksTab);
+            //console.log('lestaches',tasksTab);
         });
     });
 }
@@ -215,10 +215,10 @@ function runMultiple() {
     $('#resultDiv').html('');
     cleanGlobal();
     var theProjects = $('#sctProjectsMultiple').find('input:checkbox:checked').map(function () {
-        console.log('this', this);
+        //console.log('this', this);
         return { 'id':this.id, 'name':this.name };
     });
-    console.log('desinfos', dateEnd);
+    //console.log('desinfos', dateEnd);
     if (dateEnd != null && dateEnd !== 'undefined') {
         $(theProjects).each(function () {
             getStoryW2Date(this.id);
@@ -237,7 +237,7 @@ function getStartedStories(optProjectId) {
     // on cré l'url de requete
     var url = 'https://www.pivotaltracker.com/services/v5';
     url += '/projects/' + (optProjectId != null && optProjectId !== 'undefined' ? optProjectId : projectId);
-    console.log('tempUrl', url);
+    //console.log('tempUrl', url);
     url += '/stories?';
     url += 'with_state=started';
 
@@ -249,7 +249,7 @@ function getStartedStories(optProjectId) {
         }
         //on affiche les stories et on récupère les taches
     }).done(function (data) {
-        console.log('data', data);
+        //console.log('data', data);
         getFinishedTaskInUnfinishedStory(data, optProjectId);
     });//, getTasks(optProjectId));
 
@@ -269,23 +269,24 @@ function getFinishedTaskInUnfinishedStory(stories, optProjectId) {
                 xhr.setRequestHeader('X-TrackerToken', token);
             }
         }).done(function (data) {
-            var tasksTab = [];
+            var tempTasksTab = [];
             for (var i in data) {
-                console.log('data[i]', data[i]);
+                //console.log('data[i]', data[i]);
                 if (data[i].complete) {
                     //TODO : test du #
                     data[i].project_id = optProjectId;
-                    tasksTab.push(data[i]);
+                    tempTasksTab.push(data[i]);
                 }
             }
-            if (tasksTab.length > 0) {
+            if (tempTasksTab.length > 0) {
+                tempTasksTab = testFinishedTaskInUnfinishedStoryInDateRange(tempTasksTab)
                 displayOneStory(theStory, optProjectId);
-                console.log('thestoyr', theStory);
+                //console.log('thestoyr', theStory);
                 storiesWithTasks.push(theStory);
-                var nonReportedTasks = testTasksAlreadyReported(tasksTab);
+                var nonReportedTasks = testTasksAlreadyReported(tempTasksTab);
                 displayTasks(nonReportedTasks);
                 tasksToSetReported = tasksToSetReported.concat(nonReportedTasks);
-                console.log('tasksToSetReported', tasksToSetReported);               
+                //console.log('tasksToSetReported', tasksToSetReported);               
                 //setTasksReported(nonReportedTasks);
             }
             if ($('input:radio:checked').val() == 'single') {
@@ -302,39 +303,56 @@ function getFinishedTaskInUnfinishedStory(stories, optProjectId) {
                    
                 }
             }
-            console.log('tasksTab', nonReportedTasks);
+            //console.log('tasksTab', nonReportedTasks);
         });
     });
 }
 
+function testFinishedTaskInUnfinishedStoryInDateRange(tasks) {
+    var tasksInDate = [];
+    for (var i in tasks) {
+        if (new Date(date) < new Date(tasks[i].updated_at) && new Date(tasks[i].updated_at) < new Date(dateEnd)) {
+            tasksInDate.push(tasks[i]);
+        }
+    }
+    return tasksInDate;
+}
+
 function testTasksAlreadyReported(tasks) {
     var nonReportedTasks = [];
-    for (var i in tasks) {
-        if (!tasks[i].description.startsWith('##')) {
-            nonReportedTasks.push(tasks[i]);
+    if (!$('input[name=checkReported]').prop('checked')) {
+        for (var i in tasks) {
+            if (!tasks[i].description.startsWith('##')) {
+                nonReportedTasks.push(tasks[i]);
+            }
         }
+    } else {
+        nonReportedTasks = tasks;
     }
     return nonReportedTasks;
 }
 
 function setTasksReported() {
     $(tasksToSetReported).each(function () {
-        var dataToSend = '{"description": "##' + this.description + '"}';
-        var url = 'https://www.pivotaltracker.com/services/v5';
-        url += '/projects/' + this.project_id;
-        url += '/stories/' + this.story_id;
-        url += '/tasks/' + this.id;     
-        $.ajax({
-            url: url,
-            beforeSend: function (xhr) {
-                xhr.setRequestHeader('X-TrackerToken', token);
-            },
-            type: 'PUT',
-            data: dataToSend,
-            contentType: 'application/json'
-            //on affiche les stories et on récupère les taches
-        }).done(function (data) {
-            
-        });//, get
+        if (!this.description.startsWith('##')) {
+
+            var dataToSend = '{"description": "##' + this.description + '"}';
+            var url = 'https://www.pivotaltracker.com/services/v5';
+            url += '/projects/' + this.project_id;
+            url += '/stories/' + this.story_id;
+            url += '/tasks/' + this.id;
+            $.ajax({
+                url: url,
+                beforeSend: function (xhr) {
+                    xhr.setRequestHeader('X-TrackerToken', token);
+                },
+                type: 'PUT',
+                data: dataToSend,
+                contentType: 'application/json'
+                //on affiche les stories et on récupère les taches
+            }).done(function (data) {
+
+            });//, get
+        }
     });    
 }

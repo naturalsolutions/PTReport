@@ -66,9 +66,10 @@
                     Choose project selection mode :
                 </div>
                 <div class="span3 offset1 ">
-                    Single project : <input type="radio" value="single" name="selectMode" value="single" />
-                    Multiple projects : <input type="radio" value="multiple" name="selectMode" value="multiple" />
-                    <a id="fakeButton" href="#action" class="btn btn-default btn-lg">Generate File</a>
+                    Single project : <input type="radio" name="selectMode" value="single" />
+                    Multiple projects : <input type="radio" name="selectMode" value="multiple" />
+                    </br>
+                    Récupérer les tâches reportées ? : <input type="checkbox" name="checkReported" />
                 </div>
             </div>
         </div>
@@ -83,6 +84,9 @@
                 <div class="span3 offset1 ">
                     Select a start date</br>
                     <input id="datepicker" class="datepick"></input>                    
+                    </br>
+                    Select a end date</br>
+                    <input id="datepickerEnd" class="datepick"></input>                    
                 </div>
                 <div class="span3">
                     <label class="checkbox">
@@ -213,6 +217,7 @@
              $("#sctUsers").change(function () { token = $("#sctUsers").val(); console.log('token : ' + token); window.location = "#action"; getAllProjects(); });
              $("#sctProjects").change(function () {  projectId = $("#sctProjects").val(); fillInformation(projectId); console.log(projectId); });
              $("#datepicker").change(function () { date = $("#datepicker").val(); console.log(date); });
+             $("#datepickerEnd").change(function () { dateEnd = $("#datepickerEnd").val(); console.log(date); });
              $("#datepickerMultipleEnd").change(function () { dateEnd = $("#datepickerMultipleEnd").val(); console.log(date); });
              $("#datepickerMultiple").change(function () { date = $("#datepickerMultiple").val(); console.log(date); });
 

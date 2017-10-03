@@ -182,6 +182,7 @@ namespace WebApplication2
             regles[" sp."] = " procédure stockée ";
             regles[" bdd."] = " Base de données ";
             regles[" fk."] = " clé étrangère ";
+            regles["##"] = "";
 
             str = str.ToLower();
             //Remplacement des abréviation par leur mot correspondant (dictionnaire->regles)
