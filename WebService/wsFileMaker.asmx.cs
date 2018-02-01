@@ -182,6 +182,8 @@ namespace WebApplication2
             regles[" sp."] = " procédure stockée ";
             regles[" bdd."] = " Base de données ";
             regles[" fk."] = " clé étrangère ";
+            regles[" FB "] = " Form Builder ";
+            regles[" dp "] = " propriétés dynamique ";
             regles["##"] = "";
 
             str = str.ToLower();
