@@ -184,6 +184,7 @@ namespace WebApplication2
             regles[" fk."] = " clé étrangère ";
             regles[" FB "] = " Form Builder ";
             regles[" dp "] = " propriétés dynamique ";
+            regles[" ws "] = " web services ";
             regles["##"] = "";
 
             str = str.ToLower();
