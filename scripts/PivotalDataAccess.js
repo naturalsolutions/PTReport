@@ -80,9 +80,15 @@ function getStoryWDate(optProjectId) {
         if (optProjectId != null && optProjectId !== 'undefined') {
             //console.log('dataTransfert', data);
             var projectName = allProjects.find(x => x.id == optProjectId).name
+            if ($("#checkNotreneco").is(':checked')) {
+                data = filterNotReneco(data);
+            }
             multipleProjects.push({ 'name': projectName, 'stories': data });
             //console.log('multpileprojects', multipleProjects);
         } else {
+            if ($("#checkNotreneco").is(':checked')) {
+                data = filterNotReneco(data);
+            }
             storiesTab = data;            
         }
         displayStories(data, optProjectId);
@@ -119,12 +125,28 @@ function getStoryW2Date(optProjectId) {
         if (optProjectId != null && optProjectId !== 'undefined') {
             //console.log('dataTransfert', data);
             var projectName = allProjects.find(x => x.id == optProjectId).name
+            if ($("#checkNotreneco").is(':checked')) {
+                data = filterNotReneco(data);
+            }
             multipleProjects.push({ 'name': projectName, 'stories': data });
-            //console.log('multpileprojects', multipleProjects);
+            console.log('multpileprojects', multipleProjects);
         } 
         displayStories(data, (optProjectId != null && optProjectId !== 'undefined' ? optProjectId : projectId));
         getStartedStories((optProjectId != null && optProjectId !== 'undefined' ? optProjectId : projectId));
     });//, getTasks(optProjectId));
+}
+
+function filterNotReneco(stories) {
+    var tempResulst = [];
+    $(stories).each(function (index, story) {
+        if (story.labels.filter(o => o.name.toLowerCase() == 'notreneco').length > 0) {
+            console.log('la story : ' + story.id + 'contient le label notreneco et ne sera pas prise en compte');
+        } else {
+            tempResulst.push(story);
+        }
+    });
+    return tempResulst;
+
 }
 
 function getTasks(stories, optProjectId) {

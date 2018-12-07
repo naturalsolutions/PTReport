@@ -96,7 +96,8 @@ D:\Code\PTReport\bin\fr\System.Web.Optimization.resources.dll
 D:\Code\PTReport\bin\fr\System.Web.Providers.resources.dll
 D:\Code\PTReport\bin\fr\Microsoft.AspNet.Membership.OpenAuth.resources.dll
 D:\Code\PTReport\bin\fr\Microsoft.AspNet.FriendlyUrls.resources.dll
-D:\Code\PTReport\obj\Debug\PivotalTracker_Report.csprojResolveAssemblyReference.cache
 D:\Code\PTReport\obj\Debug\PivotalTracker_Report.csproj.CoreCompileInputs.cache
 D:\Code\PTReport\obj\Debug\WebApplication2.dll
 D:\Code\PTReport\obj\Debug\WebApplication2.pdb
+D:\Code\PTReport\obj\Debug\PivotalTracker_Report.csprojAssemblyReference.cache
+D:\Code\PTReport\obj\Debug\PivotalTracker_Report.csproj.CopyComplete
