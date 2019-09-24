@@ -312,7 +312,7 @@ function getFinishedTaskInUnfinishedStory(stories, optProjectId) {
                 //setTasksReported(nonReportedTasks);
             }
             if ($('input:radio:checked').val() == 'single') {
-                if (nonReportedTasks.length > 0) {
+                if (nonReportedTasks && nonReportedTasks.length > 0) {
                     storiesTab.push(theStory);
                     tasksTab.push(nonReportedTasks);
                 }

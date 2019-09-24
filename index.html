@@ -71,7 +71,9 @@
                     </br>
                     Récupérer les tâches reportées ? : <input type="checkbox" name="checkReported" />
                     </br>
-                    Ne pas reporter les stories "notreneco"(label) ? : <input type="checkbox" id="checkNotreneco" checked/>
+                    Ne pas reporter les stories "notreneco"(label) ? : <input type="checkbox" id="checkNotreneco" checked />
+                    </br>
+                    Ne pas formatter les données et conserver heures+initials ? : <input type="checkbox" id="checkKeepUserNTime" />
                 </div>
             </div>
         </div>
@@ -229,8 +231,8 @@
 
              $("#valid").click(function () { run(); });
              $("#validMultiple").click(function () { runMultiple(); });
-             $("#generer").click(function () { sendNFormatData(storiesTab, tasksTab); });
-             $("#genererMultiple").click(function () { sendNFormatDataMultiple(multipleProjects); });
+             $("#generer").click(function () { sendNFormatData(storiesTab, tasksTab, $('#checkKeepUserNTime').prop("checked")); });
+             $("#genererMultiple").click(function () { sendNFormatDataMultiple(multipleProjects, $('#checkKeepUserNTime').prop("checked")); });
              $("#selectAll").click(function () {
                  $(this).parent().find('input:checkbox').each(function () { $(this).prop("checked", !$(this).prop("checked")) });
              });

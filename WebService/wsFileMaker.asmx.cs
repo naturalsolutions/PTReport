@@ -80,7 +80,7 @@ namespace WebApplication2
         }
 
         [WebMethod]
-        public string createFile(List<task> tasks, List<story> stories)
+        public string createFile(List<task> tasks, List<story> stories, bool keepMeta)
         {
             finalStrings = new List<string>();
 
@@ -107,7 +107,7 @@ namespace WebApplication2
                 {
                     if (task.story_id == story.id)
                     {
-                        finalStrings.Add(formatString(task.description, true));
+                        finalStrings.Add(keepMeta ? task.description : formatString(task.description, true));
                     }
                 }
             }
@@ -119,7 +119,7 @@ namespace WebApplication2
 
         
         [WebMethod]
-        public string createFileFromTab(List<project> projects)
+        public string createFileFromTab(List<project> projects, bool keepMeta)
         {
             finalStrings = new List<string>();
 
@@ -150,7 +150,7 @@ namespace WebApplication2
                     {
                         if (task.story_id == story.id)
                         {
-                            finalStrings.Add(formatString(task.description, true));
+                            finalStrings.Add(keepMeta ? task.description : formatString(task.description, true));
                         }
                     }
                 }

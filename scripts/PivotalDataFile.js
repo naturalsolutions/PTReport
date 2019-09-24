@@ -1,13 +1,13 @@
 ﻿var storiesTab = new Array;
 var tasksTab = new Array;
 
-function sendNFormatData(stories, tasks) {
+function sendNFormatData(stories, tasks, keepMeta = false) {
     $.ajax({
         url: './WebService/wsFileMaker.asmx/createFile',
         type: 'POST',
         datatype: 'json',
         contentType: "application/json; charset=utf-8",
-        data: "{tasks : " + JSON.stringify(tasksTab) + ", stories : " + JSON.stringify(storiesTab) + "}"
+        data: "{tasks : " + JSON.stringify(tasksTab) + ", stories : " + JSON.stringify(storiesTab) + ", keepMeta : " + JSON.stringify(keepMeta) + "}"
     }).success(function (data) {
         console.log('sendNFormatData(stories, tasks)');
         console.log(data.d);
@@ -21,13 +21,13 @@ function sendNFormatData(stories, tasks) {
     });;
 }
 
-function sendNFormatDataMultiple(projects) {
+function sendNFormatDataMultiple(projects, keepMeta = false) {
     $.ajax({
         url: './WebService/wsFileMaker.asmx/createFileFromTab',
         type: 'POST',
         datatype: 'json',
         contentType: "application/json; charset=utf-8",
-        data: "{projects : " + JSON.stringify(projects) + "}"
+        data: "{projects : " + JSON.stringify(projects) + ", keepMeta : " + JSON.stringify(keepMeta) + "}"
     }).success(function (data) {
         console.log('sendNFormatData(stories, tasks)');
         console.log(data.d);
