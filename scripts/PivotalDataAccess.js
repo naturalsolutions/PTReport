@@ -57,6 +57,8 @@ function getStoryWDate(optProjectId) {
     url += '/stories?filter=';
     url += ' includedone:true';
     url += ' accepted_after:' + date;
+    if(dateEnd && dateEnd != '')
+    url += ' accepted_before:' + dateEnd;
     //console.log("l'url", url);
     if ($("#restrUser").is(':checked')) {
         url += ' owned_by:' + $("#sctUserRestrict").val();
